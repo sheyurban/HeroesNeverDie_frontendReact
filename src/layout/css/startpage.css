@@ -1,0 +1,39 @@
+#mainDiv {
+  background-image: url(https://overwatchtracker.com/Images/Overwatch/home-bg2.jpg);
+  width: 100%;
+  height: 85%;
+  margin: 0;
+  color: #fff;
+}
+
+#homepage {
+  background-image: url('../../assets/images/724075.jpg');
+  width: 100%;
+  height: 85%;
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+  padding: 1em;
+}
+
+#mainDiv h3 {
+  text-align: center;
+  color: #fe9e09;
+}
+
+#teaser-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 15%;
+}
+
+#teaser-container div {
+  background: rgba(255, 255, 255, 0.4);
+  margin: 0 20px;
+  width: 30%;
+  padding: 0 20px 15px 20px;
+  text-align: justify;
+}
