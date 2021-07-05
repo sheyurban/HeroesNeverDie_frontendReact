@@ -6,7 +6,7 @@ const initialState = {
   showLoginDialog: false,
 };
 
-function rootReducer(state = initialState, action) {
+function authReducer(state = initialState, action) {
   console.log('Reducer: ' + action.type);
   switch (action.type) {
     case authenticationActions.SHOW_LOGIN_DIALOG:
@@ -49,4 +49,4 @@ function rootReducer(state = initialState, action) {
   }
 }
 
-export default rootReducer;
+export default authReducer;

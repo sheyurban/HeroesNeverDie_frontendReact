@@ -4,6 +4,7 @@ body,
   width: 100%;
   height: 100vh;
   margin: 0px;
+  text-align: center;
 }
 
 button {
@@ -17,6 +18,15 @@ button {
 
 button:hover{
     cursor: pointer;
+}
+
+.fontHeader{
+  font-family: 'Koverwatch';
+
+}
+
+.fontText{
+  font-family: 'Koverwatch'
 }
 
 

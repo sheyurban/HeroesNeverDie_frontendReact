@@ -1,0 +1,58 @@
+.post {
+  background: rgba(255, 254, 254, 0.62);
+  margin: 25px 15px;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.likescomments {
+  border-top: 1px solid #686d7e;
+  display: flex;
+  flex-direction: row;
+}
+
+.likescomments i,
+.likescomments div {
+  margin-right: 10px;
+  padding: 10px 0;
+}
+.likescomments i {
+  font-size: 28px;
+  color: #57585a;
+  margin-top: 3px;
+}
+
+.likescomments div {
+  font-size: 20px;
+  font-family: Koverwatch;
+  margin-top: 4px;
+  margin-right: 20px;
+  color: #57585a;
+}
+
+.post p {
+  padding-top: 15px;
+  margin: 0;
+  font-family: Koverwatch;
+  color: #000;
+  font-size: 18px;
+}
+
+.post h2 {
+  padding: 0;
+  margin: 0 0 10px 0;
+  font-family: Koverwatch;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 34px;
+  color: #686d7e;
+}
+
+.post .postContent {
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.postContent img {
+  width: 100%;
+}

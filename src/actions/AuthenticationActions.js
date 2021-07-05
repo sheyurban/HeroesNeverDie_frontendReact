@@ -1,4 +1,5 @@
 import base64 from 'react-native-base64';
+import axios from 'axios';
 
 export const SHOW_LOGIN_DIALOG = 'SHOW_LOGIN_DIALOG';
 export const HIDE_LOGIN_DIALOG = 'HIDE_LOGIN_DIALOG';
@@ -6,6 +7,7 @@ export const HIDE_LOGIN_DIALOG = 'HIDE_LOGIN_DIALOG';
 export const AUTHENTICATION_PENDING = 'AUTHENTICATION_PENDING';
 export const AUTHENTICATION_SUCCESS = 'AUTHENTICATION_SUCCESS';
 export const AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR';
+export const AUTHENTICATION_LOGOUT = 'AUTHENTICATION_LOGOUT';
 
 export function getShowLoginDialogAction() {
   return {
@@ -30,6 +32,14 @@ export function getAuthenticationSuccessAction(userSession) {
     type: AUTHENTICATION_SUCCESS,
     user: userSession.user,
     accessToken: userSession.accessToken,
+  };
+}
+
+export function logOutUser(userSession) {
+  return {
+    type: AUTHENTICATION_LOGOUT,
+    user: (userSession.user = null),
+    accessToken: (userSession.accessToken = null),
   };
 }
 
@@ -63,17 +73,13 @@ export function authenticateUser(username, password) {
 
 function login(username, password) {
   const encoded = base64.encode(username + ':' + password);
-  console.log(encoded);
   const requestOptions = {
     method: 'POST',
-    // headers: { 'Content-Type': 'application/json' },
     headers: { Authorization: 'Basic ' + encoded },
-    // body: JSON.stringify({ username, password }),
   };
-  console.log(requestOptions);
 
-
-  return fetch('http://localhost:8080/authenticate/login', requestOptions)
+  return axios
+    .post('https://localhost:8080/authenticate/login', encoded, requestOptions)
     .then(handleResponse)
     .then((userSession) => {
       return userSession;
@@ -81,31 +87,33 @@ function login(username, password) {
 }
 
 function handleResponse(response) {
-  const authorizationHeader = response.headers.get('Authorization');
+  const authorizationHeader = response.headers.authorization;
 
-  return response.text().then((text) => {
-    console.log('Receive result: ' + authorizationHeader);
+  console.log('Receive result: ' + authorizationHeader);
 
-    const data = text && JSON.parse(text);
-    var token;
-    if (authorizationHeader) token = authorizationHeader.split(' ')[0];
+  const data = response.data;
+  var token;
+  if (authorizationHeader) token = authorizationHeader.split(' ')[1];
 
-    if (!response.ok) {
-      if (response.status === 401) {
-        logout();
-      }
-      const error = (data && data.message) || response.statusText;
-      return Promise.reject(error);
-    } else {
-      let userSession = {
-        user: data,
-        accessToken: token,
-      };
-      return userSession;
+  if (!response.statusText === 'OK') {
+    if (response.status === 401) {
+      logout();
     }
-  });
+    const error = (data && data.message) || response.statusText;
+    return Promise.reject(error);
+  } else {
+    let userSession = {
+      user: data,
+      accessToken: token,
+    };
+    console.log('User: ' + JSON.stringify(userSession));
+    return userSession;
+  }
 }
 
 function logout() {
   console.error('logout');
+  return (dispatch) => {
+    dispatch(getAuthenticationPendingAction());
+  };
 }

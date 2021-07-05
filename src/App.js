@@ -1,4 +1,3 @@
-import './App.css';
 import React, { Component } from 'react';
 import TopMenu from './components/topmenu';
 import StartPage from './components/startpage';
@@ -13,11 +12,12 @@ const mapStateToProps = (state) => {
 
 class App extends Component {
   render() {
-    const user = this.props.user;
+    const user = this.props.AuthReducer.user;
+    console.log(this.props);
     let workspace;
 
-    if (user) workspace = <StartPage />;
-    else workspace = <Home />;
+    if (user) workspace = <Home />;
+    else workspace = <StartPage />;
     return (
       <div className="App">
         <TopMenu />

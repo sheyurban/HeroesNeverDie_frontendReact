@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootReducer from './reducers';
 
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-import rootReducer from './reducer/RootReducer';
 
 import thunk from 'redux-thunk';
 
@@ -19,7 +19,10 @@ const middlewares = [thunk];
 const store = createStore(
   rootReducer,
   initialState,
-  applyMiddleware(...middlewares)
+  composeWithDevTools(
+    applyMiddleware(...middlewares)
+    // other store enhancers if any
+  )
 );
 
 ReactDOM.render(

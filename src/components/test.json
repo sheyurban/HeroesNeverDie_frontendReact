@@ -1,0 +1,65 @@
+[
+  {
+    "tags": [{ "map": "hanamura", "hero": "hanzo" }],
+    "likes": ["60951807077e3357f084488d"],
+    "comments": [
+      {
+        "_id": "60ae14fc77efd430ccdbc1df",
+        "postedBy": "60951807077e3357f084488d",
+        "post": "60a662240bce15453057a094",
+        "content": "my first comment",
+        "createdAt": "2021-05-26T09:29:32.551Z",
+        "updatedAt": "2021-05-26T09:29:32.551Z",
+        "__v": 0
+      },
+      {
+        "_id": "60ae151e77efd430ccdbc1e0",
+        "postedBy": "60951807077e3357f084488d",
+        "post": "60a662240bce15453057a094",
+        "content": "my first comment",
+        "createdAt": "2021-05-26T09:30:06.049Z",
+        "updatedAt": "2021-05-26T09:30:06.049Z",
+        "__v": 0
+      },
+      {
+        "_id": "60ae152077efd430ccdbc1e1",
+        "postedBy": "60951807077e3357f084488d",
+        "post": "60a662240bce15453057a094",
+        "content": "my first comment",
+        "createdAt": "2021-05-26T09:30:08.252Z",
+        "updatedAt": "2021-05-26T09:30:08.252Z",
+        "__v": 0
+      },
+      {
+        "_id": "60af8a14b76f5a1c78a825e9",
+        "postedBy": "60951807077e3357f084488d",
+        "post": "60a662240bce15453057a094",
+        "content": "my first comment",
+        "createdAt": "2021-05-27T12:01:24.218Z",
+        "updatedAt": "2021-05-27T12:01:24.218Z",
+        "__v": 0
+      }
+    ],
+    "_id": "60a662240bce15453057a094",
+    "title": "Hanzo Main Guide",
+    "postedBy": "60951807077e3357f084488d",
+    "category": "Discuss",
+    "content": "Awesome content here...",
+    "createdAt": "2021-05-20T13:20:36.291Z",
+    "updatedAt": "2021-05-27T12:12:17.972Z",
+    "__v": 0
+  },
+  {
+    "tags": [{ "map": "route66", "hero": "hanzo" }],
+    "likes": ["60af76903d30511694031f48"],
+    "comments": [],
+    "_id": "60afa32e2a386d5270f3dd5b",
+    "title": "Genji Main Guide",
+    "postedBy": "60af76903d30511694031f48",
+    "category": "Guide",
+    "content": "Awesome content here...",
+    "createdAt": "2021-05-27T13:48:30.493Z",
+    "updatedAt": "2021-05-27T14:33:13.540Z",
+    "__v": 0
+  }
+]

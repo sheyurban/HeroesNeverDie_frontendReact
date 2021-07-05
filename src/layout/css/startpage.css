@@ -1,16 +1,27 @@
 #mainDiv {
   background-image: url(https://overwatchtracker.com/Images/Overwatch/home-bg2.jpg);
   width: 100%;
-  height: 85%;
+  height: 100%;
   margin: 0;
   color: #fff;
+  font-family: 'Koverwatch';
+  overflow: hidden;
 }
 
 #homepage {
   background-image: url('../../assets/images/724075.jpg');
+  background-size: cover;
+  background-color: #2f3543f3;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
   width: 100%;
-  height: 85%;
+  height: 89%;
   margin: 0;
+}
+
+body {
+  overflow: hidden;
 }
 
 h1 {

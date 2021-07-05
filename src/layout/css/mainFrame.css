@@ -1,0 +1,58 @@
+#MainFrame {
+  height: 98%;
+  /* width: 100%; */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 75px 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'homeTab groupTab guideTab discussTab'
+    'feedDiv feedDiv feedDiv feedDiv';
+  margin: 0 20%;
+}
+
+#homeTab,
+#groupTab,
+#guideTab,
+#discussTab {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  margin-top: 10px;
+  line-height: 75px;
+  border-bottom: 5px solid rgba(255, 255, 255, 0.01);
+  padding-bottom: 70px;
+  font-size: 32px;
+  font-family: Koverwatch;
+}
+
+.active {
+  border-bottom: 5px solid #fff !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+#feedDiv {
+  grid-area: feedDiv;
+  background: rgba(255, 255, 255, 0.4);
+  /* height: 100%; */
+  margin-top: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+  
+}
+
+#homeTab {
+  grid-area: homeTab;
+}
+
+#groupTab {
+  grid-area: groupTab;
+}
+
+#guideTab {
+  grid-area: guideTab;
+}
+
+#discussTab {
+  grid-area: discussTab;
+}

@@ -44,7 +44,7 @@ class LoginButton extends Component {
   }
 
   render() {
-    var showDialog = this.props.showLoginDialog;
+    var showDialog = this.props.AuthReducer.showLoginDialog;
     if (showDialog === undefined) showDialog = false;
 
     return (
