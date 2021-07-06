@@ -13,31 +13,34 @@ const mapStateToProps = (state) => {
 class PostContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { postesLoaded: false, posts: [] };
-  }
-
-  handleLoadingOfPosts() {
-    const { loadPosts } = this.props;
-    loadPosts();
+    this.state = {
+      postesLoaded: false,
+      posts: this.props.loadPosts(this.props.AuthReducer.accessToken),
+    };
   }
 
   componentDidMount() {
     const { loadPosts } = this.props;
     loadPosts(this.props.AuthReducer.accessToken);
-    console.log(this.props.PostReducer.posts);
+  }
+
+  renderPosts(posts, user) {
+    return posts
+      .reverse()
+      .map((post) => <Post key={post.id} post={post} user={user} />);
   }
 
   render() {
-    // this.props.posts = this.props.PostReducer.posts;
-    // console.log(posts);
-    return (
-      <div>
-        <Post />
-        {/* {posts.map((post) => (
-          <Post key={post.id} post={post} />
-        ))} */}
-      </div>
-    );
+    let posts = [];
+    posts = this.props.PostReducer.posts;
+    let postComp;
+    if (posts === undefined || posts.length < 1) postComp = 'LOADING';
+    else
+      postComp = this.renderPosts(
+        JSON.parse(posts),
+        this.props.AuthReducer.user
+      );
+    return <div>{postComp}</div>;
   }
 }
 

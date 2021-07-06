@@ -13,7 +13,6 @@ const mapStateToProps = (state) => {
 class App extends Component {
   render() {
     const user = this.props.AuthReducer.user;
-    console.log(this.props);
     let workspace;
 
     if (user) workspace = <Home />;

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-
-import PostContainer from './postContainer';
+import { connect } from 'react-redux';
 
 // import GroupSearchContainer from './groupsearchContainer';
 import '../layout/css/mainFrame.css';
+import PostContainer from './postContainer';
+
+const mapStateToProps = (state) => {
+  return state;
+};
 
 class MainFrame extends Component {
-
-  
   render() {
     return (
       <div id="MainFrame">
@@ -26,4 +28,6 @@ class MainFrame extends Component {
   }
 }
 
-export default MainFrame;
+const connectedMainFrame = connect(mapStateToProps)(MainFrame);
+
+export default connectedMainFrame;

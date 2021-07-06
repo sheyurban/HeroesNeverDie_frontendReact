@@ -11,8 +11,20 @@ function PostReducer(state = initialState, action) {
       return {
         ...state,
         posts: action.posts,
+        pending: false,
       };
-
+    case postActions.POSTS_LOADING_PENDING:
+      return {
+        ...state,
+        pending: true,
+        error: null,
+      };
+    case postActions.POSTS_LOADING_ERROR:
+      return {
+        ...state,
+        error: 'Could not load posts',
+        pending: false,
+      };
     default:
       return state;
   }

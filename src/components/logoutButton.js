@@ -12,13 +12,10 @@ const mapStateToProps = (state) => {
 class LogoutButton extends Component {
   handleSubmit(e) {
     e.preventDefault();
-    console.log("LOGOUT")
+    console.log('LOGOUT');
   }
 
   render() {
-    var showDialog = this.props.showLoginDialog;
-    if (showDialog === undefined) showDialog = false;
-
     return (
       <div>
         <button onClick={this.handleSubmit}>LOGOUT</button>

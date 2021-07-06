@@ -1,5 +1,5 @@
 .post {
-  background: rgba(255, 254, 254, 0.62);
+  background: rgba(255, 254, 254, 0.85);
   margin: 25px 15px;
   text-align: left;
   padding: 0 20px;
@@ -16,6 +16,9 @@
   margin-right: 10px;
   padding: 10px 0;
 }
+.red {
+  color: red !important;
+}
 .likescomments i {
   font-size: 28px;
   color: #57585a;
@@ -30,12 +33,15 @@
   color: #57585a;
 }
 
-.post p {
+.post .headerPost {
   padding-top: 15px;
   margin: 0;
   font-family: Koverwatch;
   color: #000;
   font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .post h2 {
@@ -46,6 +52,17 @@
   font-weight: normal;
   font-size: 34px;
   color: #686d7e;
+}
+
+.post .headerPost p {
+  color: #fe9e09;
+  margin: 0;
+  padding: 0;
+}
+
+.post p i {
+  color: #686d7e;
+  margin-right: 5px;
 }
 
 .post .postContent {
