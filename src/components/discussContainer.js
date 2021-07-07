@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import '../layout/css/guidecontainer.css';
 import PostContainer from './postContainer';
-import AddDialog from './addDialogGuide';
+import AddDialog from './addDialogDiscuss';
 
 import * as postActions from '../actions/PostActions';
 
@@ -39,15 +39,10 @@ class GuideContainer extends Component {
     if (showDialog === undefined) showDialog = false;
     return (
       <div id="guideContainer">
-        {/* <div className="filters">
-          <div>MODE:</div>
-          <div>REGION:</div>
-          <div>LANGUAGE:</div>
-          <div>RANK:</div>
-        </div> */}
+       
 
         <div className="buttonDiv">
-          <button onClick={this.handleShow}>+</button>
+          <button className={this.props.PostReducer.showAddDialog ? "hiddenElement" : ""} onClick={this.handleShow}>+</button>
         </div>
         <div
           show="showDialog"
@@ -61,7 +56,7 @@ class GuideContainer extends Component {
           onClick={this.handleShow}
         />
 
-        <PostContainer category={'guide'} />
+        <PostContainer category={'discuss'} />
       </div>
     );
   }

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import '../layout/css/modalLogin.css';
 
+import * as authActions from '../actions/AuthenticationActions';
+
 import { bindActionCreators } from 'redux';
 
 const mapStateToProps = (state) => {
@@ -10,9 +12,16 @@ const mapStateToProps = (state) => {
 };
 
 class LogoutButton extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     console.log('LOGOUT');
+    const { logout } = this.props;
+    logout();
   }
 
   render() {
@@ -24,6 +33,12 @@ class LogoutButton extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({}, dispatch);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      logout: authActions.logOutUser,
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogoutButton);

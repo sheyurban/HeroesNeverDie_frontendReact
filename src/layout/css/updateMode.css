@@ -1,0 +1,30 @@
+.updateMode textarea {
+  width: 96%;
+  max-width: 100%;
+  height: 200px;
+  font-size: 10pt;
+  resize: none;
+  padding: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 15px;
+}
+#textAreaContainer {
+  width: calc(100%-30px);
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons button {
+  margin: 10px 0 20px 10px;
+}
+
+.selectReact {
+  width: 9em;
+}
+
+.selectReact span {
+  visibility: hidden;
+}

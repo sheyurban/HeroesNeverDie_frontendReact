@@ -61,7 +61,7 @@ input[type='file'] {
 
 #addDialog select {
   border: none;
-  color: grey;
+  /* color: grey; */
   padding: 5px;
 }
 

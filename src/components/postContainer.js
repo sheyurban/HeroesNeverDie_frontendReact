@@ -6,35 +6,33 @@ import Post from './post';
 import * as postActions from '../actions/PostActions';
 import { bindActionCreators } from 'redux';
 
+import UpdateMode from './updateMode';
+
 const mapStateToProps = (state) => {
   return state;
 };
 
 class PostContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      postesLoaded: false,
-      // posts: this.props.loadPosts(this.props.AuthReducer.accessToken),
-    };
-  }
-
   componentDidMount() {
     const { getPosts } = this.props;
-    getPosts(this.props.AuthReducer.accessToken);
+    getPosts(this.props.AuthReducer.accessToken, this.props.category);
   }
 
   renderPosts(posts, user) {
     return posts
       .reverse()
-      .map((post) => <Post key={post.id} post={post} user={user} />);
+      .map((post) => (
+        <Post category={this.props.category} post={post} user={user} />
+      ));
   }
 
   render() {
     let posts = [];
     posts = this.props.PostReducer.posts;
     let postComp;
-    if (posts === undefined || posts.length < 1) postComp = 'LOADING';
+    if (this.props.PostReducer.updateMode) {
+      postComp = <UpdateMode />;
+    } else if (posts === undefined || posts.length < 1) postComp = 'LOADING';
     else
       postComp = this.renderPosts(
         JSON.parse(posts),

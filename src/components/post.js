@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import * as postActions from '../actions/PostActions';
 
+
 import '../layout/css/post.css';
 import { bindActionCreators } from 'redux';
 
@@ -13,6 +14,8 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.addLike = this.addLike.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   async addLike() {
@@ -21,11 +24,32 @@ class Post extends Component {
       this.props.post._id,
       this.props.AuthReducer.accessToken
     );
-    const { loadPosts } = this.props;
-    loadPosts(this.props.AuthReducer.accessToken);
+    console.log(this.props.category)
+    const { getPosts } = this.props;
+    getPosts(this.props.AuthReducer.accessToken, this.props.category);
   }
 
-  componentDidUpdate() {}
+  async handleDelete() {
+    const data = { id: this.props.post._id };
+    const { deletePost } = this.props;
+    await deletePost(data, this.props.AuthReducer.accessToken);
+    const { getPosts } = this.props;
+    getPosts(this.props.AuthReducer.accessToken, this.props.category);
+  }
+
+  handleUpdate() {
+    console.log('update');
+    const { showUpdateMode } = this.props;
+    showUpdateMode(this.props.post);
+    // switch (this.props.category) {
+    //   case 'guide':
+
+    //     break;
+
+    //   default:
+    //     break;
+    // }
+  }
 
   showTime(timestamp) {
     var dateNow = new Date().getTime();
@@ -33,6 +57,8 @@ class Post extends Component {
     var timePassed = new Date(dateNow - datePost);
     var hours = timePassed.getHours() - 1;
     var minutes = timePassed.getMinutes();
+
+    var millisecondsPerDay = 86400000;
 
     const options = {
       year: 'numeric',
@@ -43,12 +69,12 @@ class Post extends Component {
     };
 
     switch (true) {
+      case timePassed.getTime() >= millisecondsPerDay:
+        return datePost.toLocaleDateString('de-DE', options);
       case hours === 1:
         return hours + ' hour ago';
       case hours > 1:
         return hours + ' hours ago';
-      case hours > 23:
-        return datePost.toLocaleDateString('de-DE', options);
       case minutes <= 1 || minutes === 0:
         return '1 minute ago';
       case hours < 1:
@@ -59,7 +85,10 @@ class Post extends Component {
   }
   render() {
     let userIsAuthor;
-    if (this.props.post.username === this.props.user.username)
+    if (
+      this.props.post.username === this.props.user.username ||
+      this.props.user.isAdmin
+    )
       userIsAuthor = true;
     else userIsAuthor = false;
 
@@ -94,8 +123,8 @@ class Post extends Component {
               userIsAuthor ? 'editButtons' : ' editButtons hiddenElement'
             }
           >
-            <i className="fas fa-pen"></i>
-            <i className="fas fa-trash"></i>
+            <i className="fas fa-pen" onClick={this.handleUpdate}></i>
+            <i className="fas fa-trash" onClick={this.handleDelete}></i>
           </div>
         </div>
       </div>
@@ -107,7 +136,10 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       addLikeAction: postActions.addLike,
-      loadPosts: postActions.getPosts,
+      getPosts: postActions.getPosts,
+      deletePost: postActions.deletePost,
+      showUpdateMode: postActions.showUpdateMode,
+      hideUpdateMode: postActions.hideUpdateMode,
     },
     dispatch
   );

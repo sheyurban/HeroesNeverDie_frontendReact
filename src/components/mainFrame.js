@@ -4,6 +4,7 @@ import GroupSearchContainer from './groupsearchContainer';
 import '../layout/css/mainFrame.css';
 import PostContainer from './postContainer';
 import GuideContainer from './guideContainer';
+import DiscussContainer from './discussContainer';
 
 import * as tabActions from '../actions/TabActions';
 import { bindActionCreators } from 'redux';
@@ -19,20 +20,15 @@ class MainFrame extends Component {
   }
 
   handleTabSwitch(e) {
-    console.log(this.props.TabReducer.activeTab);
-    console.log(e.target.id);
     const { switchTab } = this.props;
     switchTab(e.target.id);
   }
 
   render() {
-    console.log(this.props);
-    console.log(tabActions);
-
     let activeFeed;
     switch (this.props.TabReducer.activeTab) {
       case 'home':
-        activeFeed = <PostContainer />;
+        activeFeed = <PostContainer category={'home'} />;
         break;
       case 'group':
         activeFeed = <GroupSearchContainer />;
@@ -40,8 +36,11 @@ class MainFrame extends Component {
       case 'guide':
         activeFeed = <GuideContainer />;
         break;
+      case 'discuss':
+        activeFeed = <DiscussContainer />;
+        break;
       default:
-        activeFeed = <PostContainer />;
+        activeFeed = <PostContainer category={'home'} />;
     }
 
     return (

@@ -38,8 +38,8 @@ export function getAuthenticationSuccessAction(userSession) {
 export function logOutUser(userSession) {
   return {
     type: AUTHENTICATION_LOGOUT,
-    user: (userSession.user = null),
-    accessToken: (userSession.accessToken = null),
+    user: null,
+    accessToken: null,
   };
 }
 

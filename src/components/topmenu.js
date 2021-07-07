@@ -6,17 +6,32 @@ import LoginButton from '../components/loginbutton';
 import LogoutButton from './logoutButton';
 import { connect } from 'react-redux';
 
+import * as tabActions from '../actions/TabActions';
+import { bindActionCreators } from 'redux';
+
 const mapStateToProps = (state) => {
   return state;
 };
 
 class TopMenu extends Component {
+  constructor(props) {
+    super(props);
+    this.toggleProfileArea = this.toggleProfileArea.bind(this);
+  }
+  toggleProfileArea() {
+    console.log('profile area');
+    const { showProfilArea } = this.props;
+    showProfilArea();
+  }
+
   render() {
     const user = this.props.AuthReducer.user;
     let button, userIcon;
     if (user) {
       button = <LogoutButton />;
-      userIcon = <i className="fas fa-user"></i>;
+      userIcon = (
+        <i className="fas fa-user" onClick={this.toggleProfileArea}></i>
+      );
     } else {
       button = <LoginButton />;
     }
@@ -41,4 +56,12 @@ class TopMenu extends Component {
   }
 }
 
-export default connect(mapStateToProps)(TopMenu);
+const mapDispatchToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      showProfilArea: tabActions.showProfilArea,
+    },
+    dispatch
+  );
+
+export default connect(mapStateToProps, mapDispatchToProps)(TopMenu);

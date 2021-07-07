@@ -1,8 +1,3 @@
-// export const ACTIVE_TAB_HOME = 'ACTIVE_TAB_HOME';
-// export const ACTIVE_TAB_GROUP = 'ACTIVE_TAB_GROUP';
-// export const ACTIVE_TAB_GUIDES = 'ACTIVE_TAB_GUIDES';
-// export const ACTIVE_TAB_DISCUSS = 'ACTIVE_TAB_DISCUSS';
-export const ACTIVE_TAB_ERROR = 'ACTIVE_TAB_ERROR';
 export const ACTIVE_TAB = 'ACTIVE_TAB';
 
 export function getSwitchActiveTabSuccess(tab) {
@@ -12,18 +7,28 @@ export function getSwitchActiveTabSuccess(tab) {
   };
 }
 
-export function getSwitchActiveTabError(error) {
-  return {
-    type: ACTIVE_TAB_ERROR,
-    error: error,
-  };
-}
-
 export function switchTab(tab) {
   console.log('Switching tab');
 
   return (dispatch) => {
     const action = getSwitchActiveTabSuccess(tab);
     dispatch(action);
+  };
+}
+
+//////////////////////////////////////////////////////
+
+export const SHOW_PROFIL_AREA = 'SHOW_PROFIL_AREA';
+export const HIDE_PROFIL_AREA = 'HIDE_PROFIL_AREA';
+
+export function showProfilArea() {
+  return {
+    type: SHOW_PROFIL_AREA,
+  };
+}
+
+export function hideProfilArea() {
+  return {
+    type: HIDE_PROFIL_AREA,
   };
 }

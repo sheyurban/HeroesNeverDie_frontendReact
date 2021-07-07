@@ -44,6 +44,16 @@ function authReducer(state = initialState, action) {
         error: 'Authentication failed',
       };
     }
+    case authenticationActions.AUTHENTICATION_LOGOUT: {
+      return {
+        ...state,
+        showLoginDialog: false,
+        pending: false,
+        user: action.user,
+        accessToken: action.accessToken,
+        activeTab: 'home',
+      };
+    }
     default:
       return state;
   }

@@ -4,6 +4,8 @@ import gold from '../assets/images/gold.png';
 
 import '../layout/css/groupsearch.css';
 
+import PostContainer from './postContainer';
+
 class GroupSearchContainer extends Component {
   render() {
     return (
@@ -39,6 +41,8 @@ class GroupSearchContainer extends Component {
             </span>
           </div>
         </div>
+
+        <PostContainer category={'groupsearch'} />
       </div>
     );
   }
