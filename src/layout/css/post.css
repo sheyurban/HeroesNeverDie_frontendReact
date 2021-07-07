@@ -9,15 +9,22 @@
   border-top: 1px solid #686d7e;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+.likescomments:hover {
+  visibility: visible;
 }
 
 .likescomments i,
 .likescomments div {
   margin-right: 10px;
   padding: 10px 0;
+  cursor: pointer;
 }
 .red {
   color: red !important;
+  cursor: initial !important;
 }
 .likescomments i {
   font-size: 28px;
@@ -31,6 +38,28 @@
   margin-top: 4px;
   margin-right: 20px;
   color: #57585a;
+  display: flex;
+  flex-direction: row;
+}
+
+.likescomments .editButtons i {
+  font-size: 16px;
+  margin: 20px 0 10px 10px;
+  padding: 0;
+}
+
+.likescomments .editButtons {
+  margin: 0;
+  padding: 0;
+}
+
+.hiddenElement {
+  display: none;
+  visibility: hidden;
+}
+
+.likeButtonDiv {
+  padding-top: 0 !important;
 }
 
 .post .headerPost {

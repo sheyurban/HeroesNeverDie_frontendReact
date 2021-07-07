@@ -15,10 +15,17 @@ class Post extends Component {
     this.addLike = this.addLike.bind(this);
   }
 
-  addLike(props) {
+  async addLike() {
     const { addLikeAction } = this.props;
-    addLikeAction(this.props.post._id, this.props.AuthReducer.accessToken);
+    await addLikeAction(
+      this.props.post._id,
+      this.props.AuthReducer.accessToken
+    );
+    const { loadPosts } = this.props;
+    loadPosts(this.props.AuthReducer.accessToken);
   }
+
+  componentDidUpdate() {}
 
   showTime(timestamp) {
     var dateNow = new Date().getTime();
@@ -36,21 +43,26 @@ class Post extends Component {
     };
 
     switch (true) {
-      case hours < 1:
-        return minutes + ' minutes ago';
       case hours === 1:
         return hours + ' hour ago';
       case hours > 1:
         return hours + ' hours ago';
       case hours > 23:
         return datePost.toLocaleDateString('de-DE', options);
-      case minutes <= 1:
+      case minutes <= 1 || minutes === 0:
         return '1 minute ago';
+      case hours < 1:
+        return minutes + ' minutes ago';
       default:
         return datePost.toLocaleDateString('de-DE', options);
     }
   }
   render() {
+    let userIsAuthor;
+    if (this.props.post.username === this.props.user.username)
+      userIsAuthor = true;
+    else userIsAuthor = false;
+
     let heartIcon;
     if (this.props.post.likes.includes(this.props.user.id))
       heartIcon = <i className="heart fas fa-heart red" />;
@@ -71,10 +83,20 @@ class Post extends Component {
         <h2>{this.props.post.title}</h2>
         <div className="postContent">{this.props.post.content}</div>
         <div className="likescomments">
-          {heartIcon}
-          <div>{this.props.post.likes.length}</div>
-          <i className="comment fas fa-comment-alt" />
-          <div>{this.props.post.comments.length}</div>
+          <div className="likeButtonDiv">
+            {heartIcon}
+            <div>{this.props.post.likes.length}</div>
+            <i className="comment fas fa-comment-alt" />
+            <div>{this.props.post.comments.length}</div>
+          </div>
+          <div
+            className={
+              userIsAuthor ? 'editButtons' : ' editButtons hiddenElement'
+            }
+          >
+            <i className="fas fa-pen"></i>
+            <i className="fas fa-trash"></i>
+          </div>
         </div>
       </div>
     );
@@ -85,6 +107,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       addLikeAction: postActions.addLike,
+      loadPosts: postActions.getPosts,
     },
     dispatch
   );

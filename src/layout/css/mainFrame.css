@@ -12,10 +12,10 @@
   margin: 0 20%;
 }
 
-#homeTab,
-#groupTab,
-#guideTab,
-#discussTab {
+#home,
+#group,
+#guide,
+#discuss {
   color: #fff;
   background: rgba(255, 255, 255, 0.2);
   margin-top: 10px;
@@ -24,6 +24,7 @@
   padding-bottom: 70px;
   font-size: 32px;
   font-family: Koverwatch;
+  cursor: pointer;
 }
 
 .active {
@@ -38,21 +39,20 @@
   margin-top: 10px;
   overflow: scroll;
   overflow-x: hidden;
-  
 }
 
-#homeTab {
+#home {
   grid-area: homeTab;
 }
 
-#groupTab {
+#group {
   grid-area: groupTab;
 }
 
-#guideTab {
+#guide {
   grid-area: guideTab;
 }
 
-#discussTab {
+#discuss {
   grid-area: discussTab;
 }

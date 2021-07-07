@@ -106,7 +106,6 @@ function handleResponse(response) {
       user: data,
       accessToken: token,
     };
-    console.log('User: ' + JSON.stringify(userSession));
     return userSession;
   }
 }

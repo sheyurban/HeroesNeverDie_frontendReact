@@ -8,11 +8,14 @@ class GroupSearchContainer extends Component {
   render() {
     return (
       <div className="groupSearchContainer">
-        <div className="filters">
+        {/* <div className="filters">
           <div>MODE:</div>
           <div>REGION:</div>
           <div>LANGUAGE:</div>
           <div>RANK:</div>
+        </div> */}
+        <div className="buttonDiv">
+          <button>+</button>
         </div>
         <div className="tableGS">
           <div className="header">
@@ -22,6 +25,7 @@ class GroupSearchContainer extends Component {
             <span>REGION</span>
             <span>RANK</span>
           </div>
+
           <div className="entry">
             <span>
               Ranked role queue, looking for team to play regularly in spane

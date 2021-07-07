@@ -19,3 +19,9 @@
 h3 {
   color: #fff;
 }
+
+.fa-user {
+  color: #fff;
+  font-size: 40px;
+  cursor: pointer;
+}

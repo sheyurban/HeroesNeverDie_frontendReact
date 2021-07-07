@@ -15,13 +15,13 @@ class PostContainer extends Component {
     super(props);
     this.state = {
       postesLoaded: false,
-      posts: this.props.loadPosts(this.props.AuthReducer.accessToken),
+      // posts: this.props.loadPosts(this.props.AuthReducer.accessToken),
     };
   }
 
   componentDidMount() {
-    const { loadPosts } = this.props;
-    loadPosts(this.props.AuthReducer.accessToken);
+    const { getPosts } = this.props;
+    getPosts(this.props.AuthReducer.accessToken);
   }
 
   renderPosts(posts, user) {
@@ -47,7 +47,7 @@ class PostContainer extends Component {
 const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
-      loadPosts: postActions.getPosts,
+      getPosts: postActions.getPosts,
     },
     dispatch
   );

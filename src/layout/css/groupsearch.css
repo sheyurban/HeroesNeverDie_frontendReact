@@ -1,5 +1,5 @@
 .groupSearchContainer .filters {
-  padding: 10px 40px;
+  padding: 10px 20px;
   text-align: left;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@
 }
 
 .groupSearchContainer .tableGS {
-  margin: 20px;
+  margin: 10px;
   border-collapse: collapse;
 }
 

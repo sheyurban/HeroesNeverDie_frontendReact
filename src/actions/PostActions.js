@@ -3,9 +3,6 @@ import axios from 'axios';
 export const POSTS_LOADING_PENDING = 'POSTS_LOADED_PENDING';
 export const POSTS_LOADED_SUCCESS = 'POSTS_LOADED_SUCCESS';
 export const POSTS_LOADING_ERROR = 'POSTS_LOADING_ERROR';
-export const ADDING_LIKE_SUCCESS = 'ADDING_LIKE_SUCCESS';
-export const ADDING_LIKE_PENDING = 'ADDING_LIKE_PENDING';
-export const ADDING_LIKE_ERROR = 'ADDING_LIKE_ERROR';
 
 export function getLoadingPostsPendingAction() {
   return {
@@ -26,30 +23,6 @@ export function getLoadingPostsErrorAction(error) {
     error: error,
   };
 }
-///////////////////////////////////////////////
-
-export function getAddingLikeSuccessAction(post) {
-  return {
-    type: ADDING_LIKE_SUCCESS,
-    post: post,
-  };
-}
-
-export function getAddingLikePendingAction() {
-  return {
-    type: ADDING_LIKE_PENDING,
-    pending: true,
-  };
-}
-
-export function getAddingLikeErrorAction(error) {
-  return {
-    type: ADDING_LIKE_ERROR,
-    error: error,
-  };
-}
-
-///////////////////////////////////////////////////
 
 export function getPosts(accessToken) {
   console.log('Get posts');
@@ -79,51 +52,65 @@ function getFromServer(accessToken) {
   };
 
   return axios
-    .get('https://localhost:8080/post', requestOptions)
-    .then(handleResponseGetPosts)
+    .get('https://localhost:8080/post/home', requestOptions)
+    .then(handleResponse)
     .then((posts) => {
       return posts;
     });
 }
+///////////////////////////////////////////////
+export const ADDING_LIKE_SUCCESS = 'ADDING_LIKE_SUCCESS';
+export const ADDING_LIKE_PENDING = 'ADDING_LIKE_PENDING';
+export const ADDING_LIKE_ERROR = 'ADDING_LIKE_ERROR';
 
-function handleResponseGetPosts(response) {
-  const data = JSON.stringify(response.data);
-
-  if (!response.statusText === 'OK') {
-    if (response.status === 401) {
-      //   logout();
-    }
-    return Promise.reject('Posts not available');
-  } else {
-    return data;
-  }
+export function getAddingLikeSuccessAction(post) {
+  return {
+    type: ADDING_LIKE_SUCCESS,
+    post: post,
+  };
 }
 
-////////////////////////////////////////
+export function getAddingLikePendingAction() {
+  return {
+    type: ADDING_LIKE_PENDING,
+    pending: true,
+  };
+}
+
+export function getAddingLikeErrorAction(error) {
+  return {
+    type: ADDING_LIKE_ERROR,
+    error: error,
+  };
+}
 
 export function addLike(id, accessToken) {
   console.log('Add like');
 
   return (dispatch) => {
     dispatch(getAddingLikePendingAction());
-    addLikeRoute(id, accessToken)
-      .then(
-        (post) => {
-          const action = getAddingLikeSuccessAction(post);
-          dispatch(action);
-        },
-        (error) => {
+    try {
+      addLikeRoute(id, accessToken)
+        // getFromServer(accessToken)
+        .then(
+          (post) => {
+            const action = getAddingLikeSuccessAction(post);
+            dispatch(action);
+          },
+          (error) => {
+            dispatch(getAddingLikeErrorAction(error));
+          }
+        )
+        .catch((error) => {
           dispatch(getAddingLikeErrorAction(error));
-        }
-      )
-      .catch((error) => {
-        dispatch(getAddingLikeErrorAction(error));
-      });
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
 function addLikeRoute(id, accessToken) {
-  console.log(accessToken)
   const requestOptions = {
     method: 'PATCH',
     headers: {
@@ -131,27 +118,108 @@ function addLikeRoute(id, accessToken) {
     },
   };
   const data = { idPost: id };
-  axios
+  return axios
     .patch('https://localhost:8080/post/like', data, requestOptions)
-    .then((response) => {
-      console.log(response)
-      if (!response.statusText === 'OK') {
-        if (response.status === 401) {
-          //   logout();
-        }
-        return Promise.reject('Like could not be added');
-      }
-      return JSON.stringify(response.data);
+    .then(handleResponse)
+    .then((post) => {
+      return post;
     });
 }
 
-function handleResponseAddLike(response){
-  console.log(response)
+////////////////////////////////////////////////////
+export const ADDING_GUIDE_SUCCESS = 'ADDING_GUIDE_SUCCESS';
+export const ADDING_GUIDE_PENDING = 'ADDING_GUIDE_PENDING';
+export const ADDING_GUIDE_ERROR = 'ADDING_GUIDE_ERROR';
+
+export const SHOW_ADD_DIALOG = 'SHOW_ADD_DIALOG';
+export const HIDE_ADD_DIALOG = 'HIDE_ADD_DIALOG';
+
+export function getShowAddDialogAction() {
+  return {
+    type: SHOW_ADD_DIALOG,
+  };
+}
+
+export function getHideAddDialogAction() {
+  return {
+    type: HIDE_ADD_DIALOG,
+  };
+}
+
+export function getAddingGuideSuccessAction(post) {
+  return {
+    type: ADDING_GUIDE_SUCCESS,
+    post: post,
+  };
+}
+
+export function getAddingGuidePendingAction() {
+  return {
+    type: ADDING_GUIDE_PENDING,
+    pending: true,
+  };
+}
+
+export function getAddingGuideErrorAction(error) {
+  return {
+    type: ADDING_GUIDE_ERROR,
+    error: error,
+  };
+}
+
+export function addGuide(data, accessToken) {
+  console.log('Add guide');
+
+  return (dispatch) => {
+    dispatch(getAddingGuidePendingAction());
+    try {
+      addGuideRoute(data, accessToken)
+        .then(
+          (post) => {
+            const action = getAddingGuideSuccessAction(post);
+            dispatch(action);
+          },
+          (error) => {
+            dispatch(getAddingGuideErrorAction(error));
+          }
+        )
+        .catch((error) => {
+          dispatch(getAddingGuideErrorAction(error));
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+function addGuideRoute(data, accessToken) {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + accessToken,
+    },
+  };
+  return axios
+    .post('https://localhost:8080/post/create', data, requestOptions)
+    .then(handleResponse)
+    .then((post) => {
+      return post;
+    });
+}
+
+///////////////////////////////////////////////////
+
+function handleResponse(response) {
+  const data = JSON.stringify(response.data);
+
   if (!response.statusText === 'OK') {
     if (response.status === 401) {
       //   logout();
     }
-    return Promise.reject('Like could not be added');
+    return Promise.reject('Could not load data');
+  } else {
+    return data;
   }
-  return JSON.stringify(response.data);
 }
+
+////////////////////////////////////////

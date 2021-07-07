@@ -13,9 +13,14 @@ const mapStateToProps = (state) => {
 class TopMenu extends Component {
   render() {
     const user = this.props.AuthReducer.user;
-    let button;
-    if (user) button = <LogoutButton />;
-    else button = <LoginButton />;
+    let button, userIcon;
+    if (user) {
+      button = <LogoutButton />;
+      userIcon = <i className="fas fa-user"></i>;
+    } else {
+      button = <LoginButton />;
+    }
+
     return (
       <div id="header-wrapper">
         <div id="topmenu">
@@ -29,6 +34,7 @@ class TopMenu extends Component {
           <h3>CONTACT</h3>
 
           {button}
+          {userIcon}
         </div>
       </div>
     );

@@ -1,0 +1,15 @@
+#guideContainer .filters {
+  padding: 10px 20px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+#guideContainer .buttonDiv {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.buttonDiv button {
+    margin: 10px 15px 0 15px
+}
