@@ -43,8 +43,27 @@ class MainFrame extends Component {
         activeFeed = <PostContainer category={'home'} />;
     }
 
+    const user = this.props.AuthReducer.user;
+    let userIcon;
+    if (user) {
+      userIcon = (
+        <i
+          className="fas fa-user hiddenMediaQuerySmall"
+          onClick={this.toggleProfileArea}
+        ></i>
+      );
+      if (this.props.TabReducer.showProfilArea)
+        userIcon = (
+          <i
+            className="hiddenMediaQuerySmall fas fa-home"
+            onClick={this.toggleHomeArea}
+          ></i>
+        );
+    }
+
     return (
       <div id="MainFrame">
+        <div id="menu">{userIcon}</div>
         <div
           onClick={this.handleTabSwitch}
           id="home"

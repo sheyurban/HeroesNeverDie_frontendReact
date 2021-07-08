@@ -15,7 +15,8 @@
   #profil,
   #messages,
   #divEmpty1,
-  #divEmpty2 {
+  #divEmpty2,
+  #useroverview {
     color: #fff;
     background: rgba(255, 255, 255, 0.2);
     margin-top: 10px;

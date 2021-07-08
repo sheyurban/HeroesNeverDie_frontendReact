@@ -5,7 +5,7 @@ import '../layout/css/startpage.css';
 class StartPage extends Component {
   render() {
     return (
-      <div id="mainDiv">
+      <div id="mainDiv" className="startpage">
         <h1>HEROES NEVER DIE</h1>
         <h2>JOIN THE OVERWATCH COMMUNITY</h2>
         <div id="teaser-container">

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import '../layout/css/topmenu.css';
 import logo from '../assets/images/logo.png';
+import logoSmall from '../assets/images/HND_small_logo.png';
 import LoginButton from '../components/loginbutton';
 import LogoutButton from './logoutButton';
 import { connect } from 'react-redux';
@@ -17,11 +18,16 @@ class TopMenu extends Component {
   constructor(props) {
     super(props);
     this.toggleProfileArea = this.toggleProfileArea.bind(this);
+    this.toggleHomeArea = this.toggleHomeArea.bind(this);
   }
   toggleProfileArea() {
-    console.log('profile area');
     const { showProfilArea } = this.props;
     showProfilArea();
+  }
+
+  toggleHomeArea() {
+    const { hideProfilArea } = this.props;
+    hideProfilArea();
   }
 
   render() {
@@ -30,8 +36,15 @@ class TopMenu extends Component {
     if (user) {
       button = <LogoutButton />;
       userIcon = (
-        <i className="fas fa-user" onClick={this.toggleProfileArea}></i>
+        <i className="fas fa-user hiddenMediaQuery" onClick={this.toggleProfileArea}></i>
       );
+      if (this.props.TabReducer.showProfilArea)
+        userIcon = (
+          <i
+            className="hiddenMediaQuery fas fa-home"
+            onClick={this.toggleHomeArea}
+          ></i>
+        );
     } else {
       button = <LoginButton />;
     }
@@ -43,10 +56,14 @@ class TopMenu extends Component {
             <img src={logo} alt="logo"></img>
           </div>
 
-          <h3>ABOUT US</h3>
-          <h3>FEATURES</h3>
-          <h3>FAQ</h3>
-          <h3>CONTACT</h3>
+          <div id="logo_small">
+            <img src={logoSmall} alt="logo"></img>
+          </div>
+
+          <h3 className="hiddenMediaQuery">ABOUT US</h3>
+          <h3 className="hiddenMediaQuery">FEATURES</h3>
+          <h3 className="hiddenMediaQuery">FAQ</h3>
+          <h3 className="hiddenMediaQuery">CONTACT</h3>
 
           {button}
           {userIcon}
@@ -60,6 +77,7 @@ const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       showProfilArea: tabActions.showProfilArea,
+      hideProfilArea: tabActions.hideProfilArea,
     },
     dispatch
   );

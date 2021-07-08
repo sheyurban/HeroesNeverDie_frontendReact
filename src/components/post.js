@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import * as postActions from '../actions/PostActions';
-
+import * as messageActions from '../actions/MessageActions';
 
 import '../layout/css/post.css';
 import { bindActionCreators } from 'redux';
@@ -16,6 +16,7 @@ class Post extends Component {
     this.addLike = this.addLike.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.sendMessage = this.sendMessage.bind(this);
   }
 
   async addLike() {
@@ -24,7 +25,6 @@ class Post extends Component {
       this.props.post._id,
       this.props.AuthReducer.accessToken
     );
-    console.log(this.props.category)
     const { getPosts } = this.props;
     getPosts(this.props.AuthReducer.accessToken, this.props.category);
   }
@@ -38,17 +38,13 @@ class Post extends Component {
   }
 
   handleUpdate() {
-    console.log('update');
     const { showUpdateMode } = this.props;
     showUpdateMode(this.props.post);
-    // switch (this.props.category) {
-    //   case 'guide':
+  }
 
-    //     break;
-
-    //   default:
-    //     break;
-    // }
+  sendMessage() {
+    const { openModal } = this.props;
+    openModal(this.props.post.postedBy);
   }
 
   showTime(timestamp) {
@@ -115,9 +111,19 @@ class Post extends Component {
           <div className="likeButtonDiv">
             {heartIcon}
             <div>{this.props.post.likes.length}</div>
-            <i className="comment fas fa-comment-alt" />
-            <div>{this.props.post.comments.length}</div>
+            {/* <i className="comment fas fa-comment-alt" />
+            <div>{this.props.post.comments.length}</div> */}
+            <i
+              className={
+                this.props.post.username ===
+                this.props.AuthReducer.user.username
+                  ? 'hiddenElement fas fa-envelope'
+                  : 'fas fa-envelope'
+              }
+              onClick={this.sendMessage}
+            ></i>
           </div>
+
           <div
             className={
               userIsAuthor ? 'editButtons' : ' editButtons hiddenElement'
@@ -140,6 +146,8 @@ const mapDispatchToProps = (dispatch) =>
       deletePost: postActions.deletePost,
       showUpdateMode: postActions.showUpdateMode,
       hideUpdateMode: postActions.hideUpdateMode,
+      openModal: messageActions.openModal,
+      closeModal: messageActions.closeModal,
     },
     dispatch
   );

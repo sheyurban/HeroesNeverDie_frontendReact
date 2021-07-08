@@ -48,7 +48,7 @@ span {
   text-align: left;
 }
 
-div span:nth-child(1) {
+.groupSearchContainer div span:nth-child(1) {
   padding: 0 15px;
   width: 40%;
   text-overflow: ellipsis;
@@ -56,21 +56,100 @@ div span:nth-child(1) {
   height: 1.2em;
   white-space: nowrap;
 }
-div span:nth-child(2) {
+.groupSearchContainer div span:nth-child(2) {
   width: 20%;
 }
-div span:nth-child(3) {
+.groupSearchContainer div span:nth-child(3) {
   width: 20%;
 }
-div span:nth-child(4) {
+.groupSearchContainer div span:nth-child(4) {
   width: 10%;
   text-align: center;
 }
-div span:nth-child(5) {
+.groupSearchContainer div span:nth-child(5) {
   text-align: center;
   width: 10%;
 }
 
 .rank img {
   width: 30px;
+}
+
+@media (min-width: 1500px) {
+  .groupSearchContainer .filters {
+    padding: 10px 20px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .groupSearchContainer .tableGS .header {
+    justify-content: space-around;
+    background-color: #2f3543;
+    color: #fff;
+    font-family: Koverwatch;
+    font-size: 26px;
+    padding: 5px 0;
+  }
+
+  .groupSearchContainer .tableGS {
+    margin: 10px;
+    border-collapse: collapse;
+  }
+
+  .groupSearchContainer td,
+  .groupSearchContainer th {
+    text-align: left;
+    border: none;
+    padding: 15px 0;
+    padding-left: 5px;
+  }
+
+  .entry {
+    background-color: rgba(47, 53, 67, 0.5);
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 0;
+  }
+
+  .header,
+  .entry {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    align-items: center;
+    margin: 5px;
+    padding: 4px 0;
+  }
+
+  span {
+    text-align: left;
+  }
+
+  .groupSearchContainer div span:nth-child(1) {
+    padding: 0 15px;
+    width: 40%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 1.2em;
+    white-space: nowrap;
+  }
+  .groupSearchContainer div span:nth-child(2) {
+    width: 20%;
+  }
+  .groupSearchContainer div span:nth-child(3) {
+    width: 20%;
+  }
+  .groupSearchContainer div span:nth-child(4) {
+    width: 10%;
+    text-align: center;
+  }
+  .groupSearchContainer div span:nth-child(5) {
+    text-align: center;
+    width: 10%;
+  }
+
+  .rank img {
+    width: 30px;
+  }
 }

@@ -46,7 +46,13 @@ class GuideContainer extends Component {
           <div>RANK:</div>
         </div> */}
 
-        <div className="buttonDiv">
+        <div
+          className={
+            this.props.PostReducer.updateMode
+              ? 'hiddenElement buttonDiv'
+              : 'buttonDiv'
+          }
+        >
           <button onClick={this.handleShow}>+</button>
         </div>
         <div

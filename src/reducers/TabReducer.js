@@ -1,4 +1,5 @@
 import * as tabActions from '../actions/TabActions';
+import * as authActions from '../actions/AuthenticationActions';
 
 const initialState = {
   activeTab: 'home',
@@ -17,11 +18,19 @@ function TabReducer(state = initialState, action) {
       return {
         ...state,
         showProfilArea: true,
+        activeTab: 'profil',
       };
-    case tabActions.hideProfilArea:
+    case tabActions.HIDE_PROFIL_AREA:
       return {
         ...state,
         showProfilArea: false,
+        activeTab: 'home',
+      };
+    case authActions.AUTHENTICATION_LOGOUT:
+      return {
+        ...state,
+        showProfilArea: false,
+        activeTab: 'home',
       };
     default:
       return state;

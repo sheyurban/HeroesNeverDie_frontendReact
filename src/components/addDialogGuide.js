@@ -51,7 +51,6 @@ class AddDialogGuide extends Component {
 
   async handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
     const { title, content, file, type, hero, map } = this.state;
     const data = {
       title,

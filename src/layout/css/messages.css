@@ -1,0 +1,93 @@
+#messageContainer {
+  margin: 40px 15px;
+}
+
+#messageContainer div span:nth-child(1) {
+  padding: 0 15px;
+  width: 20%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 1.2em;
+  white-space: nowrap;
+}
+#messageContainer div span:nth-child(2) {
+  width: 70%;
+}
+#messageContainer div span:nth-child(3) {
+  width: 10%;
+  text-align: right;
+  margin-right: 15px;
+}
+
+.messagePreview {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  align-items: center;
+  margin: 5px;
+  padding: 4px 0;
+
+  background-color: rgba(47, 53, 67, 0.5);
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.messagePreview {
+  cursor: pointer;
+}
+
+.yourMessage {
+  background-color: rgba(255, 153, 0, 0.719);
+  align-self: flex-start;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 5px 0;
+}
+
+.myMessage {
+  background-color: rgba(255, 255, 255, 0.884);
+  align-self: flex-end;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.timeStamp {
+  margin: 0;
+  text-align: right;
+}
+
+#chatMessages {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.534);
+  padding: 5px;
+}
+#chat {
+  height: 100%;
+}
+
+.emptyChat {
+  margin: 40px;
+}
+
+#chat h2 {
+  background-color: rgba(255, 255, 255, 0.815);
+  margin: 0;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+#chatMenu {
+  background-color: aliceblue;
+  display: flex;
+}
+
+#chatMenu input {
+  margin: 10px;
+}
+
+#chatMenu button {
+  margin: 10px;
+}

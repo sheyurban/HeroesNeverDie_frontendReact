@@ -1,21 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import '../layout/css/mainFrame.css';
 
 import MainFrame from './mainFrame';
-// import ProfilFrame from './profileFrame';
-
+import ProfilFrame from './profileFrame';
 import '../layout/css/startpage.css';
+
+const mapStateToProps = (state) => {
+  return state;
+};
 
 class Home extends Component {
   render() {
-    return (
-      <div id="homepage">
-        <MainFrame />
-        {/* <ProfilFrame /> */}
-      </div>
-    );
+    let frame;
+    if (!this.props.TabReducer.showProfilArea) frame = <MainFrame />;
+    else frame = <ProfilFrame />;
+    return <div id="homepage">{frame}</div>;
   }
 }
 
-export default Home;
+const connectedHome = connect(mapStateToProps)(Home);
+
+export default connectedHome;

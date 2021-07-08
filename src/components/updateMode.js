@@ -43,12 +43,14 @@ class updateMode extends Component {
         type: this.state.type,
       },
     };
-    console.log(data);
 
     const { updatePost } = this.props;
     await updatePost(data, this.props.AuthReducer.accessToken);
     const { getPosts } = this.props;
-    getPosts(this.props.AuthReducer.accessToken, this.props.category);
+    getPosts(
+      this.props.AuthReducer.accessToken,
+      this.props.TabReducer.activeTab
+    );
   }
 
   handleTagsChange(tag) {

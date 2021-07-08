@@ -1,0 +1,78 @@
+.userOverview .filters {
+  padding: 10px 20px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+.userOverview .tableGS .header {
+  justify-content: space-around;
+  background-color: #2f3543;
+  color: #fff;
+  font-family: Koverwatch;
+  font-size: 26px;
+  padding: 5px 0;
+}
+
+.userOverview .tableGS {
+  margin: 10px;
+  border-collapse: collapse;
+}
+
+.userOverview td,
+.userOverview th {
+  text-align: left;
+  border: none;
+  padding: 15px 0;
+  padding-left: 5px;
+}
+
+.entry {
+  background-color: rgba(47, 53, 67, 0.5);
+  color: #fff;
+  font-size: 16px;
+  padding: 5px 0;
+}
+
+.header,
+.entry {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  align-items: center;
+  margin: 5px;
+  padding: 4px 0;
+}
+
+span {
+  text-align: left;
+}
+
+.userOverview div span:nth-child(1) {
+  padding: 0 15px;
+  width: 20%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 1.2em;
+  white-space: nowrap;
+}
+.userOverview div span:nth-child(2) {
+  width: 35%;
+}
+.userOverview div span:nth-child(3) {
+  width: 20%;
+}
+.userOverview div span:nth-child(4) {
+  width: 25%;
+}
+
+.userOverview button {
+  font-size: 14px;
+  padding: 10px;
+  margin: 3px 10px 3px 0;
+}
+
+.userOverview .greyButton {
+  background-color: rgb(65, 64, 64);
+  cursor: not-allowed
+}

@@ -8,8 +8,6 @@ export function getSwitchActiveTabSuccess(tab) {
 }
 
 export function switchTab(tab) {
-  console.log('Switching tab');
-
   return (dispatch) => {
     const action = getSwitchActiveTabSuccess(tab);
     dispatch(action);

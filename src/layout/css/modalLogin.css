@@ -3,9 +3,9 @@
   z-index: 1;
   padding: 30px;
   border-radius: 10px;
-  left: 35%;
+  left: 15%;
   top: 25%;
-  width: 20%;
+  width: 40%;
   background-color: #2f3543;
 }
 
@@ -14,6 +14,7 @@
 }
 
 input[type='text'],
+input[type='email'],
 input[type='password'] {
   width: 100%;
   padding: 12px 20px;
@@ -42,4 +43,83 @@ input[type='password'] {
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+#modalLogin #link {
+  color: #fff;
+  text-decoration: underline;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+#errorMessage {
+  color: rgb(255, 0, 0) !important;
+}
+
+#noMargin {
+  margin-bottom: 0;
+}
+
+@media (min-width: 1500px) {
+  #modalLogin {
+    position: absolute;
+    z-index: 1;
+    padding: 30px;
+    border-radius: 10px;
+    left: 35%;
+    top: 25%;
+    width: 20%;
+    background-color: #2f3543;
+  }
+
+  .modalLoginHide {
+    display: none;
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='password'] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  #registerButton {
+    background-color: #575a61;
+  }
+
+  #modalLogin button {
+    margin: 5px;
+  }
+
+  #modalLogin p,
+  #modalLogin h2 {
+    color: #fff;
+  }
+
+  #blurredBackground {
+    background-color: rgba(255, 255, 255, 0.45);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  #modalLogin #link {
+    color: #fff;
+    text-decoration: underline;
+    margin-top: 0;
+    cursor: pointer;
+  }
+
+  #errorMessage {
+    color: rgb(255, 0, 0) !important;
+  }
+
+  #noMargin {
+    margin-bottom: 0;
+  }
 }

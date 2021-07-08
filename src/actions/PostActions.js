@@ -1,4 +1,6 @@
 import axios from 'axios';
+import configData from '../config.json';
+import { SERVER_URL } from '../config.json';
 
 export const POSTS_LOADING_PENDING = 'POSTS_LOADED_PENDING';
 export const POSTS_LOADED_SUCCESS = 'POSTS_LOADED_SUCCESS';
@@ -54,35 +56,35 @@ function getFromServer(accessToken, category) {
   switch (category) {
     case 'home':
       return axios
-        .get('https://localhost:8080/post/home', requestOptions)
+        .get(configData.SERVER_URL + '/post/home', requestOptions)
         .then(handleResponse)
         .then((posts) => {
           return posts;
         });
     case 'discuss':
       return axios
-        .get('https://localhost:8080/post/discuss', requestOptions)
+        .get(SERVER_URL + '/post/discuss', requestOptions)
         .then(handleResponse)
         .then((posts) => {
           return posts;
         });
     case 'groupsearch':
       return axios
-        .get('https://localhost:8080/post/groupsearch', requestOptions)
+        .get(SERVER_URL + '/post/groupsearch', requestOptions)
         .then(handleResponse)
         .then((posts) => {
           return posts;
         });
     case 'guide':
       return axios
-        .get('https://localhost:8080/post/guide', requestOptions)
+        .get(SERVER_URL + '/post/guide', requestOptions)
         .then(handleResponse)
         .then((posts) => {
           return posts;
         });
     default:
       return axios
-        .get('https://localhost:8080/post/home', requestOptions)
+        .get(SERVER_URL + '/post/home', requestOptions)
         .then(handleResponse)
         .then((posts) => {
           return posts;
@@ -150,7 +152,7 @@ function addLikeRoute(id, accessToken) {
   };
   const data = { idPost: id };
   return axios
-    .patch('https://localhost:8080/post/like', data, requestOptions)
+    .patch(SERVER_URL + '/post/like', data, requestOptions)
     .then(handleResponse)
     .then((post) => {
       return post;
@@ -231,7 +233,7 @@ function addPostRoute(data, accessToken) {
     },
   };
   return axios
-    .post('https://localhost:8080/post/create', data, requestOptions)
+    .post(SERVER_URL + '/post/create', data, requestOptions)
     .then(handleResponse)
     .then((post) => {
       return post;
@@ -300,7 +302,7 @@ function deletePostRoute(data, accessToken) {
   };
   console.log(accessToken);
   return axios
-    .delete('https://localhost:8080/post/delete', requestOptions)
+    .delete(SERVER_URL + '/post/delete', requestOptions)
     .then(handleResponse)
     .then((post) => {
       return post;
@@ -383,7 +385,7 @@ function updatePostRoute(data, accessToken) {
     },
   };
   return axios
-    .patch('https://localhost:8080/post/update', data, requestOptions)
+    .patch(SERVER_URL + '/post/update', data, requestOptions)
     .then(handleResponse)
     .then((post) => {
       return post;

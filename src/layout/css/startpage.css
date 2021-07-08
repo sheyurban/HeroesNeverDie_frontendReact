@@ -1,50 +1,118 @@
-#mainDiv {
-  background-image: url(https://overwatchtracker.com/Images/Overwatch/home-bg2.jpg);
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  color: #fff;
-  font-family: 'Koverwatch';
-  overflow: hidden;
-}
-
 #homepage {
   background-image: url('../../assets/images/724075.jpg');
-  background-size: cover;
-  background-color: #2f3543f3;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  width: 100%;
-  height: 89%;
-  margin: 0;
-}
-
-body {
-  overflow: hidden;
-}
-
-h1 {
-  margin: 0;
-  padding: 1em;
-}
-
-#mainDiv h3 {
-  text-align: center;
-  color: #fe9e09;
+  background-repeat: repeat;
 }
 
 #teaser-container {
-  display: flex;
-  flex-direction: row;
   justify-content: center;
-  margin: 0 15%;
 }
 
 #teaser-container div {
   background: rgba(255, 255, 255, 0.4);
   margin: 0 20px;
-  width: 30%;
   padding: 0 20px 15px 20px;
   text-align: justify;
+}
+#teaser-container h3 {
+  font-family: BigNoodleTooOblique;
+  font-size: 38px;
+  text-align: center;
+  color: #fda820;
+  padding-top: 15px;
+}
+
+#teaser-container p {
+  font-family: BigNoodleTooOblique;
+  font-size: 30px;
+  text-align: justify;
+}
+
+#mainDiv {
+  background-image: url(https://overwatchtracker.com/Images/Overwatch/home-bg2.jpg);
+  background-repeat: repeat;
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  font-family: 'Koverwatch';
+}
+
+.startpage h1 {
+  font-family: Koverwatch;
+  color: #ff9c00;
+  font-size: 50px;
+  padding-top: 20px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+.startpage h2 {
+  font-family: Koverwatch;
+  margin-top: 0;
+  font-size: 42px;
+}
+
+@media (min-width: 1500px) {
+  #mainDiv {
+    background-image: url(https://overwatchtracker.com/Images/Overwatch/home-bg2.jpg);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    color: #fff;
+    font-family: 'Koverwatch';
+    overflow: hidden;
+  }
+
+  #homepage {
+    background-image: url('../../assets/images/724075.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: 89%;
+    margin: 0;
+  }
+
+  body {
+    overflow: hidden;
+  }
+
+  .startpage h1 {
+    font-family: Koverwatch;
+    color: #ff9c00;
+    font-size: 64px;
+    margin-bottom: 20px;
+  }
+
+  .startpage h2 {
+    font-family: Koverwatch;
+    margin-top: 0;
+    font-size: 64px;
+  }
+
+  #teaser-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0 15%;
+  }
+
+  #teaser-container div {
+    background: rgba(255, 255, 255, 0.4);
+    margin: 0 20px;
+    width: 25%;
+    padding: 0 20px 15px 20px;
+    text-align: justify;
+  }
+  #teaser-container h3 {
+    font-family: BigNoodleTooOblique;
+    font-size: 46px;
+    text-align: center;
+    color: #fda820;
+  }
+
+  #teaser-container p {
+    font-family: BigNoodleTooOblique;
+    font-size: 30px;
+    text-align: justify;
+  }
 }

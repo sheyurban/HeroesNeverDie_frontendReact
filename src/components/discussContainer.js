@@ -39,10 +39,21 @@ class GuideContainer extends Component {
     if (showDialog === undefined) showDialog = false;
     return (
       <div id="guideContainer">
-       
-
-        <div className="buttonDiv">
-          <button className={this.props.PostReducer.showAddDialog ? "hiddenElement" : ""} onClick={this.handleShow}>+</button>
+        <div
+          className={
+            this.props.PostReducer.updateMode
+              ? 'hiddenElement buttonDiv'
+              : 'buttonDiv'
+          }
+        >
+          <button
+            className={
+              this.props.PostReducer.showAddDialog ? 'hiddenElement' : ''
+            }
+            onClick={this.handleShow}
+          >
+            +
+          </button>
         </div>
         <div
           show="showDialog"

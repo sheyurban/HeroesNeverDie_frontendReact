@@ -5,6 +5,11 @@ import '../layout/css/profilFrame.css';
 import * as tabActions from '../actions/TabActions';
 import { bindActionCreators } from 'redux';
 
+import UserOverview from './userOverview';
+import MessageContainer from './messageContainer';
+import Profil from './profil';
+
+
 const mapStateToProps = (state) => {
   return state;
 };
@@ -16,23 +21,36 @@ class ProfilFrame extends Component {
   }
 
   handleTabSwitch(e) {
-    console.log(this.props.TabReducer.activeTab);
-    console.log(e.target.id);
     const { switchTab } = this.props;
     switchTab(e.target.id);
   }
 
   render() {
-    console.log(this.props);
-    console.log(tabActions);
+    let userTab;
+    if (this.props.AuthReducer.user.isAdmin)
+      userTab = (
+        <div
+          id="useroverview"
+          onClick={this.handleTabSwitch}
+          className={
+            this.props.TabReducer.activeTab === 'useroverview' ? 'active' : ''
+          }
+        >
+          USERS
+        </div>
+      );
+    else userTab = <div id="divEmpty2"></div>;
 
     let activeFeed;
     switch (this.props.TabReducer.activeTab) {
       case 'profil':
-        // activeFeed = <PostContainer />;
+        activeFeed = <Profil />;
         break;
       case 'messages':
-        // activeFeed = <GroupSearchContainer />;
+        activeFeed = <MessageContainer />;
+        break;
+      case 'useroverview':
+        activeFeed = <UserOverview />;
         break;
       default:
       // activeFeed = <PostContainer />;
@@ -58,7 +76,7 @@ class ProfilFrame extends Component {
         >
           MESSAGES
         </div>
-        <div id="divEmpty1"></div>
+        {userTab}
         <div id="divEmpty1"></div>
         <div id="feedDiv">{activeFeed}</div>
       </div>

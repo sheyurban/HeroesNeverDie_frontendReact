@@ -72,7 +72,6 @@ class LoginButton extends Component {
       <div>
         <button onClick={this.handleShow}>LOGIN</button>
         <div
-          show="showDialog"
           id="blurredBackground"
           className={showDialog ? '' : 'modalLoginHide'}
           onClick={this.handleClose}
@@ -82,73 +81,20 @@ class LoginButton extends Component {
           className={showDialog ? '' : 'modalLoginHide'}
           onClick={this.handleShow}
         >
-          <form
-            className={
-              this.props.AuthReducer.showRegisterModal ? 'hiddenElement' : ''
-            }
-          >
+          <form>
             <div>
-              <h2>LOGIN</h2>
+              <h2>Send message</h2>
               <input
                 type="text"
-                placeholder="Username"
-                name="username"
+                placeholder="Message"
+                name="message"
+                value={this.state.message}
                 onChange={this.handleChange}
               />
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={this.handleChange}
-              />
-              <p
-                id="errorMessage"
-                className={this.props.AuthReducer.error ? '' : 'hiddenElement'}
-              >
-                {this.props.AuthReducer.error}
-              </p>
-              <p>{this.props.AuthReducer.message}</p>
-              <button id="registerButton" onClick={this.handleRegisterToggle}>
-                REGISTER
-              </button>
+
               <button type="submit" onClick={this.handleSubmit}>
-                LOGIN
+                
               </button>
-              <p>LOGIN ISSUES?</p>
-            </div>
-          </form>
-          <form
-            className={
-              this.props.AuthReducer.showRegisterModal ? '' : 'hiddenElement'
-            }
-          >
-            <div>
-              <h2>REGISTER</h2>
-              <input
-                type="text"
-                placeholder="Username"
-                name="username"
-                onChange={this.handleChange}
-              />
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                onChange={this.handleChange}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                onChange={this.handleChange}
-              />
-              <button type="submit" onClick={this.handleRegister}>
-                REGISTER
-              </button>
-              <p id="noMargin">You already have an account?</p>
-              <p id="link" onClick={this.handleLoginModal}>
-                Login here
-              </p>
             </div>
           </form>
         </div>

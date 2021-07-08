@@ -16,7 +16,7 @@ class GroupSearchContainer extends Component {
           <div>LANGUAGE:</div>
           <div>RANK:</div>
         </div> */}
-        <div className="buttonDiv">
+        <div className="buttonDiv labelAlignLeft">
           <button>+</button>
         </div>
         <div className="tableGS">
