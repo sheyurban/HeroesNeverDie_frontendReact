@@ -21,9 +21,9 @@ class Chat extends Component {
     this.setState({ [name]: value });
   }
 
-  reloadMessages() {
+  async reloadMessages() {
     const { getMessages } = this.props;
-    getMessages(this.props.AuthReducer.accessToken);
+    await getMessages(this.props.AuthReducer.accessToken);
     let newChat = JSON.parse(this.props.MessageReducer.chats).find(
       (chat) =>
         chat[0].by.username === this.props.MessageReducer.openChat.username ||
@@ -65,7 +65,7 @@ class Chat extends Component {
     var dateNow = new Date().getTime();
     var datePost = new Date(timestamp);
     var timePassed = new Date(dateNow - datePost);
-    var hours = datePost.getHours() - 1;
+    var hours = datePost.getHours();
     var minutes = datePost.getMinutes();
 
     var millisecondsPerDay = 86400000;
@@ -115,7 +115,7 @@ class Chat extends Component {
         <div id="chatMessages">
           {this.renderMessages(this.props.MessageReducer.chat)}
         </div>
-        <div id="chatMenu"> 
+        <div id="chatMenu">
           <input
             type="text"
             name="message"

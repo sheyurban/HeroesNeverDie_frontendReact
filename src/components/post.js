@@ -54,7 +54,7 @@ class Post extends Component {
     var hours = timePassed.getHours() - 1;
     var minutes = timePassed.getMinutes();
 
-    var millisecondsPerDay = 86400000;
+    var millisecondsPerDay = 82800000;
 
     const options = {
       year: 'numeric',

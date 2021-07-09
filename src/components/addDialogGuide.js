@@ -125,14 +125,14 @@ class AddDialogGuide extends Component {
               name="content"
               onChange={this.handleChange}
             ></textarea>
-            <div className="labelAlignLeft">
+            {/* <div className="labelAlignLeft">
               <input
                 type="file"
                 accept="image/*"
                 name="sampleFile"
                 onChange={this.handleChange}
               />
-            </div>
+            </div> */}
 
             <div id="selectorDiv">
               <div>
